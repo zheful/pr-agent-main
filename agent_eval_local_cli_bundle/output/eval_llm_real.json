@@ -1,0 +1,40 @@
+{
+  "mode": "llm_judge",
+  "summary": {
+    "total_result_cases": 3,
+    "execution_failed_cases": 0,
+    "quality_eligible_cases": 3,
+    "scored_cases": 3,
+    "judge_failed_cases": 0,
+    "average_score_0_10": 0.0
+  },
+  "cases": [
+    {
+      "case_id": "S001",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output consists entirely of logs and error messages indicating that the PR review failed due to an LLM inference error (unsupported model name). No actual review content was generated, so none of the required key points (missing input parameter validation, empty value error code, error response structure consistency) were addressed. No forbidden points were triggered because no review content was produced."
+    },
+    {
+      "case_id": "S002",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output contains only logs and an error message indicating that the PR review failed due to an LLM inference error (unsupported model name). No actual review content was generated, so none of the key points (parameterized query, SQL injection risk reduction, database exception handling) were addressed. No forbidden points were triggered because no review content was produced."
+    },
+    {
+      "case_id": "S003",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output contains only system logs and an error indicating that the LLM inference failed due to an invalid model name. No actual PR review content was generated, so none of the required key points (avoiding KeyError, handling missing keys, returning None convention) were addressed. No forbidden points were triggered because no review content was produced."
+    }
+  ]
+}

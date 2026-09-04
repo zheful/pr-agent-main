@@ -1,0 +1,902 @@
+[
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S001",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S001\n- layer: smoke\n\n### Findings\n- 新增了显式错误返回，建议统一错误码和错误响应结构。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 174,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S002",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S002\n- layer: smoke\n\n### Findings\n- 疑似 SQL 拼接，建议使用参数化查询防止注入。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 173,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S003",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S003\n- layer: smoke\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 180,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C001",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C001\n- layer: core\n\n### Findings\n- 疑似敏感信息被写入日志，建议对 token 等字段做脱敏或移除。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 180,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C002",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C002\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C003",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C003\n- layer: core\n\n### Findings\n- 存在用户输入参与文件路径拼接的风险，建议做路径规范化和白名单控制。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 181,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C004",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C004\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C005",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C005\n- layer: core\n\n### Findings\n- 发现高风险动态执行调用（eval/exec），建议立即替换为安全解析或白名单机制。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 189,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C006",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C006\n- layer: core\n\n### Findings\n- 新增了显式错误返回，建议统一错误码和错误响应结构。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 173,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "H001",
+      "layer": "hard",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: H001\n- layer: hard\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "H002",
+      "layer": "hard",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: H002\n- layer: hard\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "H003",
+      "layer": "hard",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: H003\n- layer: hard\n\n### Findings\n- 发现高风险动态执行调用（eval/exec），建议立即替换为安全解析或白名单机制。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 189,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S004",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S004\n- layer: smoke\n\n### Findings\n- 新增了显式错误返回，建议统一错误码和错误响应结构。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 174,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S005",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S005\n- layer: smoke\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 180,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S006",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S006\n- layer: smoke\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 180,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S007",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S007\n- layer: smoke\n\n### Findings\n- 新增了显式错误返回，建议统一错误码和错误响应结构。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 174,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S008",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S008\n- layer: smoke\n\n### Findings\n- 新增了显式错误返回，建议统一错误码和错误响应结构。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 174,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S009",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S009\n- layer: smoke\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 180,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "S010",
+      "layer": "smoke",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: S010\n- layer: smoke\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 180,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C007",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C007\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C008",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C008\n- layer: core\n\n### Findings\n- 疑似敏感信息被写入日志，建议对 token 等字段做脱敏或移除。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 180,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C009",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C009\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C010",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C010\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C011",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C011\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C012",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C012\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C013",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C013\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C014",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C014\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C015",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C015\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C016",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C016\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C017",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C017\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "C018",
+      "layer": "core",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: C018\n- layer: core\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "H004",
+      "layer": "hard",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: H004\n- layer: hard\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "H005",
+      "layer": "hard",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: H005\n- layer: hard\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "H006",
+      "layer": "hard",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: H006\n- layer: hard\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "H007",
+      "layer": "hard",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: H007\n- layer: hard\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  },
+  {
+    "meta": {
+      "run_id": "20011b20-3d91-4f3a-8413-f3b221ab3860",
+      "case_id": "H008",
+      "layer": "hard",
+      "mode": "simulate",
+      "status": "success",
+      "start_ts": "2026-08-24T15:19:36.342907+00:00",
+      "end_ts": "2026-08-24T15:19:36.342907+00:00",
+      "latency_ms": 0,
+      "error_type": "",
+      "error_message": "",
+      "pr_agent_cmd": [
+        "SIMULATED"
+      ]
+    },
+    "agent_output": {
+      "raw_text": "## PR Review (Simulated)\n\n### Case\n- case_id: H008\n- layer: hard\n\n### Findings\n- 未发现明确高危问题，建议补充边界测试并确认改动与业务意图一致。\n\n### Suggested Follow-ups\n- 增加对应单元测试和异常路径测试。\n- 对高风险路径补充日志审计与告警规则。\n",
+      "normalized": {
+        "char_count": 179,
+        "line_count": 12
+      }
+    },
+    "eval_eligible": true
+  }
+]

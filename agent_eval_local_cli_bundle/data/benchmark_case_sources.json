@@ -1,0 +1,650 @@
+[
+  {
+    "case_id": "S001",
+    "layer": "smoke",
+    "file_path": "app/handlers.py",
+    "before_code": "    user_id = req.args['id']\n    return db.fetch_user(user_id)\n",
+    "after_code": "    user_id = req.args.get('id')\n    if not user_id:\n        return {'error': 'missing id'}, 400\n    return db.fetch_user(user_id)\n",
+    "scene_desc": "接口参数从必填改为可空读取，需验证空值处理是否合理。",
+    "gt_review": "应关注输入校验是否完整，缺失 id 时返回 400 是正确方向，并建议统一错误码与错误结构。",
+    "gt_key_points": [
+      "缺失输入参数校验",
+      "空值返回错误码",
+      "错误响应结构一致性"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入风险",
+      "并发死锁"
+    ]
+  },
+  {
+    "case_id": "S002",
+    "layer": "smoke",
+    "file_path": "app/repo.py",
+    "before_code": "    sql = \"select * from users where name = '%s'\" % name\n    return conn.execute(sql)\n",
+    "after_code": "    sql = \"select * from users where name = ?\"\n    return conn.execute(sql, (name,))\n",
+    "scene_desc": "将字符串拼接 SQL 改为参数化查询。",
+    "gt_review": "应肯定安全性提升，并可建议补充异常处理与空结果处理。",
+    "gt_key_points": [
+      "参数化查询",
+      "降低SQL注入风险",
+      "建议补充数据库异常处理"
+    ],
+    "gt_forbidden_points": [
+      "仍存在明显SQL拼接注入",
+      "建议删除查询功能"
+    ]
+  },
+  {
+    "case_id": "S003",
+    "layer": "smoke",
+    "file_path": "app/cache.py",
+    "before_code": "    return CACHE[key]\n",
+    "after_code": "    if key not in CACHE:\n        return None\n    return CACHE[key]\n",
+    "scene_desc": "修复 key 不存在时直接抛异常的问题。",
+    "gt_review": "应指出边界处理更健壮，也可提示返回 None 的调用方约定。",
+    "gt_key_points": [
+      "避免KeyError",
+      "缺失键边界处理",
+      "返回None约定说明"
+    ],
+    "gt_forbidden_points": [
+      "内存泄漏",
+      "网络超时"
+    ]
+  },
+  {
+    "case_id": "C001",
+    "layer": "core",
+    "file_path": "service/auth.py",
+    "before_code": "    token = issue_token(user)\n    return token\n",
+    "after_code": "    token = issue_token(user)\n    logger.info(\"login success user=%s token=%s\", user, token)\n    return token\n",
+    "scene_desc": "登录成功后新增日志打印。",
+    "gt_review": "应识别敏感信息泄漏风险：token 不应写入普通日志。",
+    "gt_key_points": [
+      "敏感信息日志泄漏",
+      "token不应明文记录",
+      "建议日志脱敏"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议关闭所有日志"
+    ]
+  },
+  {
+    "case_id": "C002",
+    "layer": "core",
+    "file_path": "service/pay.py",
+    "before_code": "    result = gateway.charge(order_id)\n    return result\n",
+    "after_code": "    try:\n        result = gateway.charge(order_id)\n    except TimeoutError:\n        result = gateway.charge(order_id)\n    return result\n",
+    "scene_desc": "支付调用超时后立即重试一次。",
+    "gt_review": "应讨论重试策略是否安全（幂等性、重复扣费风险），并建议加入幂等键。",
+    "gt_key_points": [
+      "重试导致重复扣费风险",
+      "缺少幂等保障",
+      "建议幂等键或去重机制"
+    ],
+    "gt_forbidden_points": [
+      "XSS风险",
+      "建议删除重试逻辑"
+    ]
+  },
+  {
+    "case_id": "C003",
+    "layer": "core",
+    "file_path": "api/export.py",
+    "before_code": "    filename = req.args.get('name', 'report.csv')\n",
+    "after_code": "    filename = req.args.get('name', 'report.csv')\n    return send_file('/tmp/' + filename)\n",
+    "scene_desc": "导出接口引入了用户可控文件名拼接。",
+    "gt_review": "应识别路径遍历风险，并建议白名单或路径规范化。",
+    "gt_key_points": [
+      "路径遍历风险",
+      "用户输入直接拼接文件路径",
+      "建议白名单或规范化"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议禁用导出功能"
+    ]
+  },
+  {
+    "case_id": "C004",
+    "layer": "core",
+    "file_path": "worker/jobs.py",
+    "before_code": "    process(job)\n",
+    "after_code": "    process(job)\n    process(job)\n",
+    "scene_desc": "任务执行函数被重复调用。",
+    "gt_review": "应指出潜在重复执行副作用，并建议检查是否误改。",
+    "gt_key_points": [
+      "重复执行风险",
+      "可能导致副作用翻倍",
+      "建议确认业务意图"
+    ],
+    "gt_forbidden_points": [
+      "缓冲区溢出",
+      "建议开启分布式锁"
+    ]
+  },
+  {
+    "case_id": "C005",
+    "layer": "core",
+    "file_path": "utils/parser.py",
+    "before_code": "    data = json.loads(text)\n    return data\n",
+    "after_code": "    data = eval(text)\n    return data\n",
+    "scene_desc": "为兼容旧格式，把 json 解析替换成 eval。",
+    "gt_review": "应识别高危代码执行风险，禁止使用 eval 解析外部输入。",
+    "gt_key_points": [
+      "eval执行风险",
+      "不可信输入代码执行",
+      "应使用安全解析方案"
+    ],
+    "gt_forbidden_points": [
+      "只是性能优化",
+      "建议保留eval"
+    ]
+  },
+  {
+    "case_id": "C006",
+    "layer": "core",
+    "file_path": "service/order.py",
+    "before_code": "    amount = int(req.json['amount'])\n    return save_order(amount)\n",
+    "after_code": "    amount = int(req.json['amount'])\n    if amount < 0:\n        return {'error': 'invalid amount'}, 400\n    return save_order(amount)\n",
+    "scene_desc": "新增金额负数校验。",
+    "gt_review": "应肯定约束增强，同时提示 amount 缺失和类型异常未覆盖。",
+    "gt_key_points": [
+      "金额负值校验",
+      "缺失字段异常处理",
+      "类型转换异常处理"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "并发竞态"
+    ]
+  },
+  {
+    "case_id": "H001",
+    "layer": "hard",
+    "file_path": "service/report.py",
+    "before_code": "    rows = db.query(user_id, from_ts, to_ts)\n",
+    "after_code": "    rows = db.query(user_id, from_ts, to_ts)\n    if len(rows) > 100000:\n        logger.info('large report rows=%d', len(rows))\n    payload = []\n    for r in rows:\n        payload.append(transform(r))\n    return payload\n",
+    "scene_desc": "报表构建中新增大数据量日志和逐条 transform。",
+    "gt_review": "应讨论性能与内存风险、分页/流式处理建议，并指出日志可能暴露规模信息。",
+    "gt_key_points": [
+      "大数据量内存风险",
+      "建议分页或流式处理",
+      "日志信息暴露风险"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议删除报表功能"
+    ]
+  },
+  {
+    "case_id": "H002",
+    "layer": "hard",
+    "file_path": "service/sync.py",
+    "before_code": "    profile = remote.fetch(uid)\n    local.save(profile)\n",
+    "after_code": "    profile = remote.fetch(uid)\n    if profile is None:\n        return False\n    if profile.get('version', 0) < local.current_version(uid):\n        return True\n    local.save(profile)\n    return True\n",
+    "scene_desc": "同步逻辑增加版本检查与空结果返回。",
+    "gt_review": "应关注返回语义一致性、分支行为是否可观测，以及版本比较正确性。",
+    "gt_key_points": [
+      "返回语义一致性",
+      "版本比较逻辑正确性",
+      "空结果处理"
+    ],
+    "gt_forbidden_points": [
+      "命令注入",
+      "建议移除版本校验"
+    ]
+  },
+  {
+    "case_id": "H003",
+    "layer": "hard",
+    "file_path": "service/config_loader.py",
+    "before_code": "    with open(path) as f:\n        return yaml.safe_load(f)\n",
+    "after_code": "    with open(path) as f:\n        data = yaml.safe_load(f)\n    if 'hooks' in data:\n        exec(data['hooks'])\n    return data\n",
+    "scene_desc": "配置读取后支持 hooks 动态执行。",
+    "gt_review": "应识别高危远程代码执行风险，禁止对配置内容直接 exec。",
+    "gt_key_points": [
+      "exec执行高危风险",
+      "配置内容不可信",
+      "应采用受限插件机制"
+    ],
+    "gt_forbidden_points": [
+      "只是代码风格问题",
+      "建议加注释即可"
+    ]
+  },
+  {
+    "case_id": "S004",
+    "layer": "smoke",
+    "file_path": "app/input.py",
+    "before_code": "    q = req.args['q']\n    return q\n",
+    "after_code": "    q = req.args.get('q', '').strip()\n    if not q:\n        return {'error': 'empty query'}, 400\n    return q\n",
+    "scene_desc": "查询参数新增空字符串校验。",
+    "gt_review": "应肯定边界校验增强，并建议统一错误响应格式。",
+    "gt_key_points": [
+      "空字符串校验",
+      "返回400错误码",
+      "错误响应一致性"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "并发死锁"
+    ]
+  },
+  {
+    "case_id": "S005",
+    "layer": "smoke",
+    "file_path": "app/list_api.py",
+    "before_code": "    page = int(req.args.get('page', 1))\n    return repo.list(page=page)\n",
+    "after_code": "    page = int(req.args.get('page', 1))\n    if page < 1:\n        page = 1\n    return repo.list(page=page)\n",
+    "scene_desc": "分页参数新增最小值保护。",
+    "gt_review": "应指出参数健壮性增强，并建议覆盖 page 非数字异常。",
+    "gt_key_points": [
+      "分页参数下限保护",
+      "参数健壮性",
+      "建议处理类型异常"
+    ],
+    "gt_forbidden_points": [
+      "命令注入",
+      "建议移除分页"
+    ]
+  },
+  {
+    "case_id": "S006",
+    "layer": "smoke",
+    "file_path": "app/time_utils.py",
+    "before_code": "    return datetime.fromisoformat(raw)\n",
+    "after_code": "    if not raw:\n        return None\n    return datetime.fromisoformat(raw)\n",
+    "scene_desc": "空时间输入直接返回 None。",
+    "gt_review": "应关注返回 None 对调用方影响，并建议补充文档或类型约定。",
+    "gt_key_points": [
+      "空输入边界处理",
+      "返回None语义",
+      "调用方兼容性"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "缓冲区溢出"
+    ]
+  },
+  {
+    "case_id": "S007",
+    "layer": "smoke",
+    "file_path": "app/math_api.py",
+    "before_code": "    return a / b\n",
+    "after_code": "    if b == 0:\n        return {'error': 'divide by zero'}, 400\n    return a / b\n",
+    "scene_desc": "新增除零保护分支。",
+    "gt_review": "应肯定异常路径处理，并建议统一错误结构。",
+    "gt_key_points": [
+      "除零边界处理",
+      "异常路径返回",
+      "错误结构一致性"
+    ],
+    "gt_forbidden_points": [
+      "XSS",
+      "并发问题"
+    ]
+  },
+  {
+    "case_id": "S008",
+    "layer": "smoke",
+    "file_path": "app/profile.py",
+    "before_code": "    return cache[uid]\n",
+    "after_code": "    profile = cache.get(uid)\n    if profile is None:\n        return {'error': 'not found'}, 404\n    return profile\n",
+    "scene_desc": "缓存 miss 从异常改为 404 返回。",
+    "gt_review": "应指出可用性提升，并关注 404 与业务语义匹配。",
+    "gt_key_points": [
+      "缓存miss处理",
+      "404返回语义",
+      "可用性提升"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议删除缓存"
+    ]
+  },
+  {
+    "case_id": "S009",
+    "layer": "smoke",
+    "file_path": "app/search.py",
+    "before_code": "    return backend.search(keyword)\n",
+    "after_code": "    return backend.search(keyword[:64])\n",
+    "scene_desc": "新增关键字长度截断。",
+    "gt_review": "应识别输入约束增强，同时建议告知调用方截断行为。",
+    "gt_key_points": [
+      "输入长度限制",
+      "资源滥用防护",
+      "截断行为可观测性"
+    ],
+    "gt_forbidden_points": [
+      "RCE风险",
+      "建议去掉限制"
+    ]
+  },
+  {
+    "case_id": "S010",
+    "layer": "smoke",
+    "file_path": "app/logger.py",
+    "before_code": "    logger.info('req=%s', req.headers)\n",
+    "after_code": "    logger.info('req-id=%s', req.headers.get('x-request-id'))\n",
+    "scene_desc": "日志从全量 headers 收敛到 request-id。",
+    "gt_review": "应指出隐私与敏感字段泄漏风险降低。",
+    "gt_key_points": [
+      "日志最小化",
+      "敏感信息暴露降低",
+      "可观测性保留"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "并发死锁"
+    ]
+  },
+  {
+    "case_id": "C007",
+    "layer": "core",
+    "file_path": "service/user_repo.py",
+    "before_code": "    sql = f\"select * from users where email='{email}'\"\n    return db.query(sql)\n",
+    "after_code": "    sql = \"select * from users where email = ?\"\n    return db.query(sql, (email,))\n",
+    "scene_desc": "邮箱查询由字符串拼接改为参数化。",
+    "gt_review": "应明确指出注入风险下降，并建议补充索引/性能检查。",
+    "gt_key_points": [
+      "参数化查询",
+      "注入风险降低",
+      "建议补充异常处理"
+    ],
+    "gt_forbidden_points": [
+      "仍然存在明显SQL拼接",
+      "建议禁用查询"
+    ]
+  },
+  {
+    "case_id": "C008",
+    "layer": "core",
+    "file_path": "service/token.py",
+    "before_code": "    token = signer.sign(user)\n    return token\n",
+    "after_code": "    token = signer.sign(user)\n    logger.debug('issued token=%s', token)\n    return token\n",
+    "scene_desc": "新增调试日志输出 token。",
+    "gt_review": "应识别敏感凭证日志泄漏，建议脱敏或移除。",
+    "gt_key_points": [
+      "敏感凭证泄漏",
+      "token不应明文日志",
+      "建议日志脱敏"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议关闭全部日志"
+    ]
+  },
+  {
+    "case_id": "C009",
+    "layer": "core",
+    "file_path": "service/upload.py",
+    "before_code": "    path = '/data/' + name\n",
+    "after_code": "    path = '/data/' + name\n    open(path, 'wb').write(content)\n",
+    "scene_desc": "上传文件名直接拼接落盘。",
+    "gt_review": "应识别路径遍历风险并建议规范化、白名单后缀校验。",
+    "gt_key_points": [
+      "路径遍历风险",
+      "文件名缺少校验",
+      "建议路径规范化"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议禁止上传"
+    ]
+  },
+  {
+    "case_id": "C010",
+    "layer": "core",
+    "file_path": "service/notify.py",
+    "before_code": "    client.send(msg)\n",
+    "after_code": "    try:\n        client.send(msg)\n    except TimeoutError:\n        client.send(msg)\n",
+    "scene_desc": "通知发送超时后直接重试。",
+    "gt_review": "应关注幂等与重复发送风险，建议加入去重键。",
+    "gt_key_points": [
+      "重试幂等性",
+      "重复发送风险",
+      "建议去重机制"
+    ],
+    "gt_forbidden_points": [
+      "XSS",
+      "建议移除重试"
+    ]
+  },
+  {
+    "case_id": "C011",
+    "layer": "core",
+    "file_path": "service/rate_limit.py",
+    "before_code": "    if counter[uid] > 100:\n        return False\n    return True\n",
+    "after_code": "    if counter.get(uid, 0) > 100:\n        return False\n    counter[uid] = counter.get(uid, 0) + 1\n    return True\n",
+    "scene_desc": "限流计数逻辑从直接索引改为 get 并写回。",
+    "gt_review": "应关注竞态条件与原子性问题，建议使用原子计数或外部存储。",
+    "gt_key_points": [
+      "限流逻辑健壮性",
+      "并发竞态风险",
+      "建议原子操作"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议去掉限流"
+    ]
+  },
+  {
+    "case_id": "C012",
+    "layer": "core",
+    "file_path": "service/export.py",
+    "before_code": "    return '\\n'.join(data)\n",
+    "after_code": "    text = '\\n'.join(data)\n    return text.encode('utf-8')\n",
+    "scene_desc": "导出返回值从字符串改为 bytes。",
+    "gt_review": "应检查调用方兼容性与接口契约变更风险。",
+    "gt_key_points": [
+      "接口返回类型变更",
+      "调用方兼容性风险",
+      "建议补充契约测试"
+    ],
+    "gt_forbidden_points": [
+      "RCE",
+      "建议删除导出"
+    ]
+  },
+  {
+    "case_id": "C013",
+    "layer": "core",
+    "file_path": "service/session.py",
+    "before_code": "    sid = uuid4().hex\n    return sid\n",
+    "after_code": "    sid = uuid4().hex\n    cache['session:' + sid] = {'uid': uid}\n    logger.info('session created uid=%s sid=%s', uid, sid)\n    return sid\n",
+    "scene_desc": "会话创建后记录 sid 到日志。",
+    "gt_review": "应识别会话标识泄漏风险，建议仅记录哈希或前缀。",
+    "gt_key_points": [
+      "会话ID日志泄漏",
+      "敏感标识脱敏",
+      "审计与安全平衡"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议关闭会话"
+    ]
+  },
+  {
+    "case_id": "C014",
+    "layer": "core",
+    "file_path": "service/task.py",
+    "before_code": "    state = store.get(task_id)\n    execute(task_id)\n    return True\n",
+    "after_code": "    state = store.get(task_id)\n    if state == 'done':\n        return True\n    execute(task_id)\n    store.set(task_id, 'done')\n    return True\n",
+    "scene_desc": "任务执行前新增已完成状态短路。",
+    "gt_review": "应肯定幂等改进，并提示并发下状态竞争仍需保护。",
+    "gt_key_points": [
+      "幂等短路",
+      "重复执行避免",
+      "并发状态竞争"
+    ],
+    "gt_forbidden_points": [
+      "XSS",
+      "建议删除状态"
+    ]
+  },
+  {
+    "case_id": "C015",
+    "layer": "core",
+    "file_path": "service/config.py",
+    "before_code": "    return yaml.safe_load(open(path))\n",
+    "after_code": "    cfg = yaml.safe_load(open(path))\n    return cfg or {}\n",
+    "scene_desc": "配置为空时返回空 dict。",
+    "gt_review": "应肯定空值兜底，同时提示文件句柄管理与异常处理。",
+    "gt_key_points": [
+      "空配置兜底",
+      "返回类型稳定",
+      "建议资源管理"
+    ],
+    "gt_forbidden_points": [
+      "命令注入",
+      "建议抛弃配置"
+    ]
+  },
+  {
+    "case_id": "C016",
+    "layer": "core",
+    "file_path": "service/calc.py",
+    "before_code": "    return sum(nums) / len(nums)\n",
+    "after_code": "    if not nums:\n        return 0\n    return sum(nums) / len(nums)\n",
+    "scene_desc": "均值函数新增空列表处理。",
+    "gt_review": "应指出异常规避有效，并提示 0 是否符合业务语义。",
+    "gt_key_points": [
+      "空列表边界处理",
+      "除零异常避免",
+      "业务语义确认"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议删除均值函数"
+    ]
+  },
+  {
+    "case_id": "C017",
+    "layer": "core",
+    "file_path": "service/metrics.py",
+    "before_code": "    logger.info('uid=%s value=%s', uid, value)\n",
+    "after_code": "    logger.info('uid=%s value=%s', uid, value)\n    if value > 10000:\n        alert.send(uid, value)\n",
+    "scene_desc": "高值指标触发告警。",
+    "gt_review": "应关注告警风暴风险和阈值可配置性。",
+    "gt_key_points": [
+      "告警阈值逻辑",
+      "告警风暴风险",
+      "阈值配置化建议"
+    ],
+    "gt_forbidden_points": [
+      "RCE",
+      "建议移除告警"
+    ]
+  },
+  {
+    "case_id": "C018",
+    "layer": "core",
+    "file_path": "service/authz.py",
+    "before_code": "    return user.role == 'admin'\n",
+    "after_code": "    if not user:\n        return False\n    return user.role == 'admin'\n",
+    "scene_desc": "权限判断新增空用户保护。",
+    "gt_review": "应肯定空引用防护，并建议覆盖匿名与角色缺失场景。",
+    "gt_key_points": [
+      "空用户防护",
+      "权限判断健壮性",
+      "建议补充权限测试"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议默认放行"
+    ]
+  },
+  {
+    "case_id": "H004",
+    "layer": "hard",
+    "file_path": "service/batch.py",
+    "before_code": "    for item in items:\n        process(item)\n",
+    "after_code": "    results = []\n    for item in items:\n        try:\n            results.append(process(item))\n        except Exception:\n            continue\n    return results\n",
+    "scene_desc": "批处理改为吞掉异常并继续处理后续项。",
+    "gt_review": "应识别异常吞噬导致可观测性下降，并建议记录失败项。",
+    "gt_key_points": [
+      "异常吞噬风险",
+      "可观测性下降",
+      "建议失败项记录"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议停止批处理"
+    ]
+  },
+  {
+    "case_id": "H005",
+    "layer": "hard",
+    "file_path": "service/cache_refresh.py",
+    "before_code": "    for k in keys:\n        cache[k] = db.fetch(k)\n",
+    "after_code": "    for k in keys:\n        val = db.fetch(k)\n        if val is None:\n            continue\n        cache[k] = val\n    return len(cache)\n",
+    "scene_desc": "刷新逻辑跳过空值并返回 cache 大小。",
+    "gt_review": "应分析返回值语义变化与指标可解释性。",
+    "gt_key_points": [
+      "空值跳过策略",
+      "返回语义变化",
+      "指标可解释性"
+    ],
+    "gt_forbidden_points": [
+      "命令注入",
+      "建议忽略缓存"
+    ]
+  },
+  {
+    "case_id": "H006",
+    "layer": "hard",
+    "file_path": "service/webhook_verify.py",
+    "before_code": "    return hmac.compare_digest(sig, sign(body))\n",
+    "after_code": "    if not sig:\n        return False\n    expected = sign(body)\n    return hmac.compare_digest(sig, expected)\n",
+    "scene_desc": "签名校验新增空签名保护与中间变量。",
+    "gt_review": "应关注安全性增强，并建议覆盖编码/格式异常输入。",
+    "gt_key_points": [
+      "空签名拒绝",
+      "恒定时间比较",
+      "建议异常输入测试"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议跳过校验"
+    ]
+  },
+  {
+    "case_id": "H007",
+    "layer": "hard",
+    "file_path": "service/audit.py",
+    "before_code": "    fp.write(json.dumps(event) + '\\n')\n",
+    "after_code": "    event['ts'] = now_ms()\n    line = json.dumps(event, ensure_ascii=False)\n    fp.write(line + '\\n')\n    if len(line) > 5000:\n        logger.warning('large audit event')\n",
+    "scene_desc": "审计事件新增时间戳与大事件告警。",
+    "gt_review": "应检查事件原地修改副作用，以及大事件告警阈值合理性。",
+    "gt_key_points": [
+      "原地修改副作用",
+      "审计可追溯性增强",
+      "告警阈值策略"
+    ],
+    "gt_forbidden_points": [
+      "RCE",
+      "建议关闭审计"
+    ]
+  },
+  {
+    "case_id": "H008",
+    "layer": "hard",
+    "file_path": "service/migrate.py",
+    "before_code": "    for u in users:\n        new_db.insert(u)\n",
+    "after_code": "    ok = 0\n    for u in users:\n        try:\n            new_db.insert(u)\n            ok += 1\n        except Exception as e:\n            logger.error('migrate failed uid=%s err=%s', u.get('id'), e)\n    return ok\n",
+    "scene_desc": "迁移任务改为部分成功返回计数。",
+    "gt_review": "应评估部分成功语义、重试策略和补偿机制。",
+    "gt_key_points": [
+      "部分成功语义",
+      "失败记录与可恢复性",
+      "重试/补偿策略建议"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入",
+      "建议忽略失败"
+    ]
+  }
+]

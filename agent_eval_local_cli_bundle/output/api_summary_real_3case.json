@@ -1,0 +1,8 @@
+{
+  "total_cases": 3,
+  "success_cases": 3,
+  "failed_cases": 0,
+  "success_rate": 100.0,
+  "avg_latency_ms": 17760,
+  "failure_breakdown": {}
+}

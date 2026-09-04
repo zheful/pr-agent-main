@@ -1,0 +1,376 @@
+{
+  "mode": "gt",
+  "summary": {
+    "total_result_cases": 36,
+    "execution_failed_cases": 0,
+    "quality_eligible_cases": 36,
+    "scored_cases": 36,
+    "average_score_100": 30.648,
+    "average_coverage": 0.009,
+    "average_violation_rate": 0.0
+  },
+  "cases": [
+    {
+      "case_id": "S001",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S002",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 53.33,
+      "coverage": 0.3333,
+      "violation_rate": 0.0,
+      "key_points_hit": [
+        "参数化查询"
+      ],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S003",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C001",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C002",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C003",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C004",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C005",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C006",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "H001",
+      "layer": "hard",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "H002",
+      "layer": "hard",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "H003",
+      "layer": "hard",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S004",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S005",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S006",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S007",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S008",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S009",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "S010",
+      "layer": "smoke",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C007",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C008",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C009",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C010",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C011",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C012",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C013",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C014",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C015",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C016",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C017",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "C018",
+      "layer": "core",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "H004",
+      "layer": "hard",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "H005",
+      "layer": "hard",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "H006",
+      "layer": "hard",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "H007",
+      "layer": "hard",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    },
+    {
+      "case_id": "H008",
+      "layer": "hard",
+      "status": "scored",
+      "score_100": 30.0,
+      "coverage": 0.0,
+      "violation_rate": 0.0,
+      "key_points_hit": [],
+      "forbidden_points_hit": []
+    }
+  ]
+}

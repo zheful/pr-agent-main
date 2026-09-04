@@ -1,0 +1,50 @@
+[
+  {
+    "case_id": "S001",
+    "layer": "smoke",
+    "diff_patch": "--- a/app/handlers.py\n+++ b/app/handlers.py\n@@ -1,2 +1,4 @@\n-    user_id = req.args['id']\n+    user_id = req.args.get('id')\n+    if not user_id:\n+        return {'error': 'missing id'}, 400\n     return db.fetch_user(user_id)\n",
+    "scene_desc": "接口参数从必填改为可空读取，需验证空值处理是否合理。",
+    "gt_review": "应关注输入校验是否完整，缺失 id 时返回 400 是正确方向，并建议统一错误码与错误结构。",
+    "gt_key_points": [
+      "缺失输入参数校验",
+      "空值返回错误码",
+      "错误响应结构一致性"
+    ],
+    "gt_forbidden_points": [
+      "SQL注入风险",
+      "并发死锁"
+    ]
+  },
+  {
+    "case_id": "S002",
+    "layer": "smoke",
+    "diff_patch": "--- a/app/repo.py\n+++ b/app/repo.py\n@@ -1,2 +1,2 @@\n-    sql = \"select * from users where name = '%s'\" % name\n-    return conn.execute(sql)\n+    sql = \"select * from users where name = ?\"\n+    return conn.execute(sql, (name,))\n",
+    "scene_desc": "将字符串拼接 SQL 改为参数化查询。",
+    "gt_review": "应肯定安全性提升，并可建议补充异常处理与空结果处理。",
+    "gt_key_points": [
+      "参数化查询",
+      "降低SQL注入风险",
+      "建议补充数据库异常处理"
+    ],
+    "gt_forbidden_points": [
+      "仍存在明显SQL拼接注入",
+      "建议删除查询功能"
+    ]
+  },
+  {
+    "case_id": "S003",
+    "layer": "smoke",
+    "diff_patch": "--- a/app/cache.py\n+++ b/app/cache.py\n@@ -1 +1,3 @@\n+    if key not in CACHE:\n+        return None\n     return CACHE[key]\n",
+    "scene_desc": "修复 key 不存在时直接抛异常的问题。",
+    "gt_review": "应指出边界处理更健壮，也可提示返回 None 的调用方约定。",
+    "gt_key_points": [
+      "避免KeyError",
+      "缺失键边界处理",
+      "返回None约定说明"
+    ],
+    "gt_forbidden_points": [
+      "内存泄漏",
+      "网络超时"
+    ]
+  }
+]

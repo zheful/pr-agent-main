@@ -1,0 +1,337 @@
+{
+  "mode": "llm_judge",
+  "summary": {
+    "total_result_cases": 36,
+    "execution_failed_cases": 0,
+    "quality_eligible_cases": 36,
+    "scored_cases": 36,
+    "judge_failed_cases": 0,
+    "average_score_0_10": 0.0
+  },
+  "cases": [
+    {
+      "case_id": "S001",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from a failed execution due to a malformed diff patch ('Hunk is shorter than expected'). No review content was produced, so none of the ground truth key points (missing input validation, empty value error code, error response structure consistency) were addressed. No forbidden points were triggered because the output contains no analysis at all."
+    },
+    {
+      "case_id": "S002",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback of a runtime error (UnidiffParseError: Hunk is shorter than expected) and does not contain any review content. It fails to address any of the key points such as parameterized queries, SQL injection risk reduction, or database exception handling. No forbidden points are triggered because no substantive review was produced."
+    },
+    {
+      "case_id": "S003",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from a failed execution of the PR review tool. The diff patch itself is not analyzed, and no review comments or key points are provided. The output contains no mention of avoiding KeyError, handling missing keys, or returning None. Therefore, none of the ground truth key points are covered. No forbidden points are triggered because the output is not a review at all."
+    },
+    {
+      "case_id": "C001",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed execution due to a diff parsing error ('Hunk is shorter than expected'). It contains no review comments, no analysis of the code change, and does not mention any of the key points (sensitive information leakage, token logging, log masking). Therefore, the output is unusable as a PR review."
+    },
+    {
+      "case_id": "C002",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from a failed execution of the PR review tool. It contains no review content, no analysis of the diff, and no mention of any key points or forbidden points. The tool crashed due to a diff parsing error before producing any review. Therefore, the score is 0."
+    },
+    {
+      "case_id": "C003",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed PR Agent execution due to a malformed diff (UnidiffParseError: Hunk is shorter than expected). It contains no review content, no security analysis, and does not mention path traversal, user input concatenation, or any recommendations. Therefore, it hits none of the key points and triggers none of the forbidden points."
+    },
+    {
+      "case_id": "C004",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from a failed PR review tool invocation, not an actual PR review. It does not mention the duplicate `process(job)` call, the risk of repeated execution, potential doubled side effects, or any business intent confirmation. It also does not trigger any forbidden points, but it fails to address any of the key points."
+    },
+    {
+      "case_id": "C005",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a traceback from the PR Agent tool itself, indicating a failure to parse the diff due to a malformed hunk. It does not contain any review comments or analysis of the code change. Therefore, none of the key points (eval execution risk, untrusted input code execution, should use safe parsing) are addressed, and no forbidden points are triggered."
+    },
+    {
+      "case_id": "C006",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed execution of the PR Agent tool due to a malformed diff patch ('Hunk is shorter than expected'). It contains no review content, no mention of the code change, and does not address any of the key points (amount negative validation, missing field exception handling, type conversion exception handling). No forbidden points are triggered because no review was produced."
+    },
+    {
+      "case_id": "H001",
+      "layer": "hard",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from PR Agent failing to parse the diff due to a malformed hunk, and it contains no review comments or analysis. It does not address any of the key points (large data memory risk, pagination/streaming suggestion, log exposure risk) and does not trigger any forbidden points."
+    },
+    {
+      "case_id": "H002",
+      "layer": "hard",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from a failed PR review tool invocation due to a malformed diff (UnidiffParseError: Hunk is shorter than expected). No actual review content was produced, so none of the ground truth key points (return semantics consistency, version comparison logic correctness, empty result handling) were addressed. No forbidden points were triggered because no review suggestions were generated."
+    },
+    {
+      "case_id": "H003",
+      "layer": "hard",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from a failed PR review attempt due to a malformed diff, and it contains no actual review content. It does not address any of the required key points (exec risk, untrusted config, need for restricted plugin mechanism) nor does it trigger any forbidden points. The score is 0 because the output is unusable as a review."
+    },
+    {
+      "case_id": "S004",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed execution of the PR Agent tool. It contains no review content, no mention of the diff, and no coverage of the ground truth key points (empty string validation, 400 error code, error response consistency). The failure is due to a malformed diff causing a parsing error, so the agent never produced a review. No forbidden points (SQL injection, concurrency deadlock) are triggered because no analysis was performed."
+    },
+    {
+      "case_id": "S005",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from a failed execution of the PR Agent tool. It contains no review content, no analysis of the diff, and no mention of any of the ground truth key points (分页参数下限保护, 参数健壮性, 建议处理类型异常). The output is unusable as a PR review, hence a score of 0. No forbidden points were triggered because no review content was produced at all."
+    },
+    {
+      "case_id": "S006",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from a failed PR Agent execution due to a malformed diff patch ('Hunk is shorter than expected'). It contains no review content, no analysis of the code change, and does not address any of the required key points (empty input handling, returning None semantics, caller compatibility). No forbidden points are triggered because no substantive output was produced."
+    },
+    {
+      "case_id": "S007",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from a failed execution of the PR review tool. It does not contain any review content, so it does not address any of the key points (除零边界处理, 异常路径返回, 错误结构一致性). No forbidden points are triggered because no review content is present."
+    },
+    {
+      "case_id": "S008",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from PR-Agent failing to parse the diff due to a malformed hunk header ('@@ -11,7 +11,9 @@' but only 2 lines of context provided). No review content was generated, so none of the ground truth key points (cache miss handling, 404 return semantics, availability improvement) were addressed. No forbidden points were triggered because no analysis was produced."
+    },
+    {
+      "case_id": "S009",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed execution of the PR review tool. It contains no review content, no mention of input length limits, resource abuse protection, or truncation observability. It also does not trigger any forbidden points, as it provides no substantive analysis at all. The output is unusable for the review task."
+    },
+    {
+      "case_id": "S010",
+      "layer": "smoke",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a traceback from PR-Agent indicating a failure to parse the provided diff due to 'Hunk is shorter than expected'. No review content was generated, and none of the key points (log minimization, reduced sensitive information exposure, observability retention) were addressed. No forbidden points were triggered, but the output is unusable as a review."
+    },
+    {
+      "case_id": "C007",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from a failed execution due to a malformed diff (UnidiffParseError: Hunk is shorter than expected). It contains no review content, no mention of parameterized queries, SQL injection risk, or exception handling. Therefore, no key points are hit, and no forbidden points are triggered because no substantive output was produced."
+    },
+    {
+      "case_id": "C008",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from a failed PR review tool invocation, not an actual review. It contains no analysis of the diff, no mention of sensitive token logging, and no suggestions for redaction. Therefore, none of the ground truth key points are covered, and no forbidden points are triggered."
+    },
+    {
+      "case_id": "C009",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed execution of the PR review tool. It contains no actual review content, no mention of path traversal, filename validation, or path normalization. Therefore, no key points are hit, and no forbidden points are triggered. The score is 0 because the output is unusable as a review."
+    },
+    {
+      "case_id": "C010",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from PR-Agent failing to parse the diff due to a malformed hunk ('Hunk is shorter than expected'). No review content was generated, so none of the key points (retry idempotency, duplicate send risk, deduplication suggestion) were addressed. No forbidden points were triggered because no review was produced."
+    },
+    {
+      "case_id": "C011",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed execution due to a malformed diff ('Hunk is shorter than expected'). No review content was produced, so none of the expected key points (限流逻辑健壮性, 并发竞态风险, 建议原子操作) were addressed. No forbidden points were triggered because no substantive output was generated."
+    },
+    {
+      "case_id": "C012",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from a failed PR review tool invocation, not an actual review. It contains no analysis of the diff, no mention of the return type change, compatibility risks, or contract tests. Therefore, none of the key points are covered, and no forbidden points are triggered."
+    },
+    {
+      "case_id": "C013",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from a failed PR review attempt due to a malformed diff, and it does not contain any review comments or analysis. Therefore, none of the ground truth key points (session ID log leakage, sensitive identifier masking, audit vs security balance) are addressed, and no forbidden points are triggered."
+    },
+    {
+      "case_id": "C014",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from PR-Agent failing to parse the diff due to a malformed hunk ('Hunk is shorter than expected'). No review content was produced, so none of the key points (幂等短路, 重复执行避免, 并发状态竞争) were addressed. No forbidden points were triggered because no substantive output was generated."
+    },
+    {
+      "case_id": "C015",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from PR-Agent indicating a failure to parse the diff due to 'Hunk is shorter than expected'. It does not contain any review comments or analysis of the code change. Therefore, none of the key points are addressed, and no forbidden points are triggered. The output is unusable as a PR review."
+    },
+    {
+      "case_id": "C016",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed execution of the PR Agent tool. It contains no review content, no analysis of the diff, and does not address any of the key points (empty list handling, division by zero avoidance, business semantics confirmation). No forbidden points are triggered because no substantive output was produced."
+    },
+    {
+      "case_id": "C017",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from a failed execution of the PR review tool due to a malformed diff patch ('Hunk is shorter than expected'). No actual review content was produced, so none of the ground truth key points (告警阈值逻辑, 告警风暴风险, 阈值配置化建议) were addressed. No forbidden points were triggered because the output contains no substantive review suggestions."
+    },
+    {
+      "case_id": "C018",
+      "layer": "core",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a stack trace from a failed execution due to a malformed diff (UnidiffParseError: Hunk is shorter than expected). It contains no review content, no mention of the code change, and does not address any of the expected key points (empty user protection, robustness, tests). No forbidden points are triggered because no substantive output was produced."
+    },
+    {
+      "case_id": "H004",
+      "layer": "hard",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a traceback from PR Agent failing to parse the diff due to a malformed hunk ('Hunk is shorter than expected'). No review content was generated, so none of the key points (exception swallowing risk, observability degradation, suggestion to record failures) were addressed. No forbidden points were triggered because no analysis was produced."
+    },
+    {
+      "case_id": "H005",
+      "layer": "hard",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a traceback from PR-Agent failing to parse the diff due to a malformed hunk header ('@@ -12,7 +12,12 @@' indicates 7 lines removed and 12 added, but the diff only shows 5 removed and 5 added lines). No actual review content was produced, so none of the key points (null-skip strategy, return semantics change, metric interpretability) were addressed. No forbidden points were triggered because no review was generated."
+    },
+    {
+      "case_id": "H006",
+      "layer": "hard",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a traceback of a runtime error (UnidiffParseError) and does not contain any review content. It fails to address any of the key points (empty signature rejection, constant-time comparison, or suggesting tests for invalid input) and does not trigger any forbidden points. The output is unusable as a PR review."
+    },
+    {
+      "case_id": "H007",
+      "layer": "hard",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is a stack trace from PR-Agent failing to parse the diff due to a malformed hunk ('Hunk is shorter than expected'). No review content was generated, so none of the key points (in-place mutation side effects, audit traceability enhancement, alert threshold strategy) were addressed. No forbidden points were triggered because no substantive output was produced."
+    },
+    {
+      "case_id": "H008",
+      "layer": "hard",
+      "status": "scored",
+      "score_0_10": 0.0,
+      "key_points_hit": [],
+      "forbidden_triggered": [],
+      "reasoning": "The agent output is entirely a traceback from a failed attempt to parse the diff, resulting in a ValueError. No review content was produced, so none of the key points (partial success semantics, failure logging/recoverability, retry/compensation strategy) were addressed. No forbidden points were triggered because no substantive output was generated."
+    }
+  ]
+}
